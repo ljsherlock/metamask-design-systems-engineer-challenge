@@ -1,0 +1,87 @@
+<style type="text/css">
+    body {
+      margin: 0;
+    }
+    @-webkit-keyframes fieldPinPulseAnimation {
+      0%{
+        opacity:0;
+        -webkit-transform: scale(0,0);
+        -ms-transform: scale(0,0);
+        transform: scale(0,0);        
+      }
+      50%{
+        opacity:1;
+        -webkit-transform: scale(1,1);
+        -ms-transform: scale(1,1);
+        transform: scale(1,1);
+      }
+      100%{
+        -webkit-transform: scale(0,0);
+        -ms-transform: scale(0,0);
+        transform: scale(0,0);        
+      }
+    } 
+    @keyframes fieldPinPulseAnimation {
+      0%{
+        opacity:0;
+        -webkit-transform: scale(0,0);
+        -ms-transform: scale(0,0);
+        transform: scale(0,0);        
+      }
+      50%{
+        opacity:1;
+        -webkit-transform: scale(1,1);
+        -ms-transform: scale(1,1);
+        transform: scale(1,1);
+
+        }
+      100%{
+        -webkit-transform: scale(0,0);
+        -ms-transform: scale(0,0);
+        transform: scale(0,0);        
+      }
+    }
+
+    @keyframes selectedWeekday {
+      0%{
+        box-shadow: '0 0 0 0 rgba(121,104,255,0.2)'
+      }
+      50%{
+        box-shadow: '0 0 0 0.5em rgba(121,104,255,0.2)'
+        }
+      100%{
+        box-shadow: '0 0 0 0 rgba(121,104,255,0.2)'
+      }
+    }
+
+  :root {
+		font-size: calc(16px + (20 - 16) * ((100vw - 320px) / (680 - 320)));
+	}
+	body {
+		margin: 0;
+	}
+	:root {
+		font-family: 'Source Sans Pro';
+	}
+	@keyframes slideBelowWindow {
+		0% { top: -20vh }
+		100% { top: 0vh }
+	};
+	@keyframes slideAboveWindow {
+		0% { top: 0vh }
+		100% { top: -20vh }
+	};
+	@keyframes markPulse {
+		0% {
+			opacity: 0;
+			transform: scale(0, 0);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(1, 1);
+		}
+		100% {
+		 transform: scale(0, 0); 
+		}
+	}
+</style>

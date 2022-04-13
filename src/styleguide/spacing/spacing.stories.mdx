@@ -1,0 +1,44 @@
+import { 
+  Meta, 
+  ColorPalette, 
+  ColorItem, 
+  Story, 
+  Preview 
+} from '@storybook/addon-docs/blocks'
+
+import { theme } from '../../config/styleguide'
+
+import Div from '../../primitiveUI/Containers/Div'
+
+<Meta title="1. Style Guide/2. Spacing" />
+
+# Spacing
+<Div width={theme.measure[2]}>
+
+  __Spacing comes in two flavors. Depending on borders and background colors, the difference between padding and margin can be invisible to the naked eye of the user. But to a developer, they serve different roles. <br/><br/> Most codebases lack a ratio based scale and instead are littered with values that are just magic numbers. This is bad.__
+
+  Good design is based on math. Certain patterns and ratios are so prevelant in nature and music that they can’t be denied as elegant design solutions. Even in the 18th century, pages in books were designed with ratios. In the 21st century, we have gotten away from this on the web, often using magic numbers to match a ‘spec’ that has been produced in a graphics program such as photoshop, illustrator, or sketch. While these programs are useful for sketching ideas, they aren’t 100% accurate in their reflection of how the web works across device sizes or how things get drawn to the screen.
+
+</Div>
+
+<Div display='flex' flexWrap='wrap'>
+  {theme.space.map((key, item) => {
+    return (
+      <Div 
+        p={key} 
+        my={theme.space[1]} 
+        mr={theme.space[1]} 
+        backgroundColor={theme.colors.valid} 
+        height='10em' 
+        width='10em'
+      >
+        <Div 
+          backgroundColor={theme.colors.white} 
+          width='100%' 
+          height='100%'
+        />
+        <label>{key}</label>
+      </Div>
+    )
+  })}
+</Div>

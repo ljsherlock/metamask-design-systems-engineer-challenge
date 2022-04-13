@@ -1,0 +1,36 @@
+import { 
+  Meta, 
+  ColorPalette, 
+  ColorItem, 
+  Story, 
+  Preview 
+} from '@storybook/addon-docs/blocks'
+
+import { theme } from '../config/styleguide'
+
+import Div from '../primitiveUI/Containers/Div'
+
+<Meta title="1. Style Guide/1. Summary" />
+
+# Mobile Experience Styleguide
+<br/>
+<Div width={theme.measure[2]}>
+
+
+  ### This style system uses the following unit measurement:
+ `8px (0.5em)`.
+  <br/>
+
+  ## What does that mean?
+
+  It means that anything and everything that is measured throughout this UI library uses multiples of 8 and as such the measurements used will be multiples of 8. 
+
+  ## Why eight?
+ 
+  Eight is divisible by 2 and 4. 
+  
+  This becomes important for displays that multiply pixel sizes due to higher resolutions. For example, a resolution of 1.5 would multiply 5px by this number resulting in a half pixel offset — The result is an edge that appears blurred, caused by the antialiasing of that half pixel. Half pixels don’t happen on an 8pt grid system.
+
+  Using a base of 8 also matches up to the default browsers base font-size of 16px (8x2). Some of the most popular screen sizes are also divisible by 8 on at lease one axis, which makes for an easy fit.
+
+</Div>

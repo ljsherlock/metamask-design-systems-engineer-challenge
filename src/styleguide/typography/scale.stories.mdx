@@ -1,0 +1,77 @@
+import { 
+  Meta, 
+  ColorPalette, 
+  ColorItem, 
+  Story, 
+  Preview 
+} from '@storybook/addon-docs/blocks'
+
+import { theme } from '../../config/styleguide'
+
+import Div from '../../primitiveUI/Containers/Div'
+import Heading from '../../primitiveUI/Text/Heading'
+import Copy from '../../primitiveUI/Text/Copy'
+
+<Meta title="1. Style Guide/Typography/Font Scale" />
+
+# Font Scale
+
+<Div width={theme.measure[2]}>
+
+  “The simplest scale is a single note, and sticking with a single note draws more attention to other parameters, such as rhythm and inflection… In the sixteenth century, a series of common sizes developed among European typographers, and the series survived with little change and few additions for 400 years… This is the typographic equivalent of the diatonic scale.”
+
+  —- **Robert Bringhurst, The Elements of Typographic Style**
+
+  ---
+
+  Below is the '*rough*' font scale that I've extracted from the designs.
+
+  <br/>
+
+</Div>
+
+<Div width={theme.measure[3]}>
+
+  ### Font Sizes
+
+  <Div 
+    display='flex' 
+    flexWrap='wrap'
+  >
+    {theme.fontSizes.slice().reverse().map((size, index) => {
+      return (
+        <Div 
+          display='flex'
+          flexDirection='column'
+          mb={theme.space[1]}
+        >
+        <>
+          <Div 
+            width={theme.space[6]}
+            height={theme.space[6]}
+            display='flex'
+            alignItems='flex-end'
+            justifyContent='center'
+            border='1px solid lightgray'
+            pb='0.25em'
+          >
+            <Heading level='1' fontSize={size} lineHeight='1'>
+              A
+            </Heading>
+          </Div>
+          <Div 
+            width={theme.space[6]}
+            display='flex'
+            justifyContent='center'
+            border='1px solid lightgray'
+          >
+            <Copy fontSize={theme.fontSizes[0]} color='gray'>
+              {size}
+            </Copy>
+          </Div>
+          </>
+        </Div>
+      )
+    })}
+  </Div>
+</Div>

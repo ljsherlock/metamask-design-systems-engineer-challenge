@@ -1,0 +1,53 @@
+const path = require('path')
+const createCompiler = require('@storybook/addon-docs/mdx-compiler-plugin');
+
+module.exports = {
+  addons: ['@storybook/addon-docs/register'],
+  webpackFinal: async (config, { configType }) => {
+
+    // 2. manually configure webpack, since you're not using the preset
+    // config.module.rules.push({
+    //   // 2a. Load `.stories.mdx` / `.story.mdx` files as CSF and generate
+    //   //     the docs page from the markdown
+    //   test: /\.(stories|story)\.mdx$/,
+    //   use: [
+    //     {
+    //       loader: 'babel-loader',
+    //       // may or may not need this line depending on your app's setup
+    //       options: {
+    //         plugins: ['@babel/plugin-transform-react-jsx'],
+    //       },
+    //     },
+    //     {
+    //       loader: '@mdx-js/loader',
+    //       options: {
+    //         compilers: [createCompiler({})],
+    //       },
+    //     },
+    //   ],
+    // });
+
+    // remove after debugging
+    // console.log('before ',config.module.rules)
+
+    config.module.rules[8] = {
+      include: path.resolve(__dirname, "../src"),
+      test: /\.tsx$/,
+      enforce: 'pre',
+      exclude: /node_modules/,
+      loader: 'eslint-loader',
+      options: {
+        quiet: true,
+        emitError: false,
+        emitWarning: false,
+        failOnWarning: false,
+        failOnError: false, 
+      },
+    };
+  
+    // // remove after debugging
+    // console.log('after ',config.module.rules)
+
+    return config;
+  },
+}

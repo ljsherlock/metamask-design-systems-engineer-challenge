@@ -1,0 +1,26 @@
+import { 
+  Meta, 
+  ColorPalette, 
+  ColorItem, 
+  Story, 
+  Preview 
+} from '@storybook/addon-docs/blocks'
+import { theme } from '../../config/styleguide'
+
+<Meta title="1. Style Guide/Theming/Light/Grays" />
+
+# Grays
+
+In visual perception a color is almost never seen as it really is – as it physically is. This fact makes color the most relative medium in art. - Josef Albers
+
+<ColorPalette>
+  {Object.keys(theme.sortedGrays).map((key, index) => {
+    return (
+      <ColorItem
+        title={theme.sortedGrays[key].name}
+        subtitle="Colors"
+        colors={[theme.sortedGrays[key].hex]}
+      />
+    )
+  })}
+</ColorPalette>

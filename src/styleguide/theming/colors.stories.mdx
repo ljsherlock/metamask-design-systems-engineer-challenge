@@ -1,0 +1,27 @@
+import { 
+  Meta, 
+  ColorPalette, 
+  ColorItem, 
+  Story, 
+  Preview 
+} from '@storybook/addon-docs/blocks'
+import { theme } from '../../config/styleguide'
+
+<Meta title="1. Style Guide/Theming/Light/Colors" />
+
+# Colors
+
+<ColorPalette>
+  {Object.keys(theme.sortedColors).map((key, index) => {
+    return (
+      <ColorItem
+        title={theme.sortedColors[key].name}
+        subtitle="Colors"
+        colors={[theme.sortedColors[key].hex]}
+      />
+    )
+  })}
+</ColorPalette>
+
+
+    
