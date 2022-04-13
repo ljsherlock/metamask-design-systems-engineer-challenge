@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import { withKnobs, text, select } from "@storybook/addon-knobs";
 
-import Button from './index'
+import Component from './index'
 
 interface Props {
   name: string
   story: any
 }
 
-export const ButtonStory: FunctionComponent<Props> = (props) => {
+export const Info: FunctionComponent<Props> = (props) => {
   
   const label = text("Label", "lalala");
   const variant = select(
@@ -22,23 +22,23 @@ export const ButtonStory: FunctionComponent<Props> = (props) => {
   
   return (
     <>
-      <Button
+      <Component
         id='label'
         variant={variant}
       >
-        click
-      </Button>
+        This is a paragraph of Info. It is long enough so that it cannot be a label.
+      </Component>
     </>
   )
 }
 
 export default {
-  title: 'Components/User Input/Mouse/Buttons/Primitive',
-  component: ButtonStory,
+  title: 'Primitive/Text/Info',
+  component: Info,
 }
 
 // @ts-ignore
-ButtonStory.story = {
-  name: 'Button',
+Info.story = {
+  name: 'Info',
   decorators: [ withKnobs ]
 }

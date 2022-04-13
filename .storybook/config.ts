@@ -10,7 +10,7 @@ addDecorator(withA11y);
 
 addParameters({
   options: {
-    brandTitle: 'Mobile ApproveMe',
+    brandTitle: 'MetaMask Price Checker',
     brandUrl: '',
     showRoots: true,
     storySort: (a, b) =>
@@ -26,11 +26,14 @@ addParameters({
 
 // automatically import all files ending in *.stories.(tsx|jsx)
 configure([
-  // Style Guide
-  require.context('../src/styleguide', true, /.(mdx)$/),
+    // Style Guide
+    require.context('../src/styleguide', true, /.(mdx)$/),
 
-  // Scenes
-  require.context('../src/scenes/PriceChecker', true, /scene.stories\.(mdx|[tj]sx?)$/), 
+    // Scenes
+    require.context('../src/scenes/PriceChecker', true, /scene.stories\.(mdx|[tj]sx?)$/), 
+
+    require.context('../src/primitiveUI/UserInput/Mouse/Button', true, /story.stories\.(mdx|[tj]sx?)$/), 
+    require.context('../src/components', true, /story.stories\.(mdx|[tj]sx?)$/), 
   ],
   module
 );

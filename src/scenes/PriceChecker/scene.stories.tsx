@@ -37,7 +37,7 @@ export const PriceCheckerStory: FunctionComponent<Props> = (props) => {
 }
 
 export default {
-  title: 'Style Guide/[Folder]/[Name]',
+  title: 'Components/PriceChecker/price',
   component: PriceCheckerStory,
 }
 
