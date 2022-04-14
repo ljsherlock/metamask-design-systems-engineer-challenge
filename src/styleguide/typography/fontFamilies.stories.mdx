@@ -7,19 +7,19 @@ import {
   Source
 } from '@storybook/addon-docs/blocks'
 
-import { theme } from '../../config/styleguide'
+import { theme } from '../../config/styleguide'
 
 import Div from '../../primitiveUI/Containers/Div'
 import Heading from '../../primitiveUI/Text/Heading'
 import Copy from '../../primitiveUI/Text/Copy'
 
-<Meta title="1. Style Guide/Typography/Font Families" />
+<Meta title="1. Style GUide/4. Typography/Font Families" />
 
 # Font Families
 
 ---
 
-<Div width={theme.measure[3]}>
+<Div width={theme.measure[8]}>
 
   <Div 
     display='flex' 
@@ -53,16 +53,16 @@ import Copy from '../../primitiveUI/Text/Copy'
               justifyContent='center'
               p={theme.space[1]}
             >
-              <Heading l
-                evel='1'
-                fontSize={theme.fontSizes[3]}
+              <Copy 
+                level='1'
+                fontSize={theme.fontSizes[0]}
                 fontFamily={theme.fonts[key]}
                 lineHeight='1.5'
               >
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              </Heading>
+              </Copy>
             </Div>
-            <Source language='typescript' code={`theme.fonts.${theme.fonts[key]}`}/>
+            <Source language='typescript' code={`theme.fonts.roboto OR theme.fonts[0]`}/>
           </>
         </Div>
       )

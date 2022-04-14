@@ -5,9 +5,36 @@ import {
   Story, 
   Preview 
 } from '@storybook/addon-docs/blocks'
-import { theme } from '../../config/styleguide'
+import { theme } from '../../config/styleguide'
 
-<Meta title="1. Style Guide/Theming/Light/Colors" />
+import Div from '../../primitiveUI/Containers/Div'
+
+<Meta title="1. Style GUide/3. Theme/Colors" />
+
+# Grays
+
+<Div width={theme.measure[8]}>
+
+  "In visual perception a color is almost never seen as it really is – as it physically is. This fact makes color the most relative medium in art."
+
+  —- **Josef Albers, Interaction of Color**
+
+  ---
+
+</Div>
+
+<ColorPalette>
+  {Object.keys(theme.sortedGrays).map((key, index) => {
+    return (
+      <ColorItem
+        title={theme.sortedGrays[key].name}
+        subtitle="Colors"
+        colors={[theme.sortedGrays[key].hex]}
+        key={key} 
+      />
+    )
+  })}
+</ColorPalette>
 
 # Colors
 
@@ -18,10 +45,8 @@ import { theme } from '../../config/styleguide'
         title={theme.sortedColors[key].name}
         subtitle="Colors"
         colors={[theme.sortedColors[key].hex]}
+        key={key} 
       />
     )
   })}
 </ColorPalette>
-
-
-    

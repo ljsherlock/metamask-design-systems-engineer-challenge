@@ -5,15 +5,15 @@ import {
 	styleComponentTypes
 } from '../../../utilities/styleUtility'
 
-import * as Icons from '../../../assets/icons'
+import Icons from '../../../assets/icons'
 
 interface Props extends styleComponentTypes {
 	icon: string
 	alt?: string
 	className?: string
 	id?: string
-	onBlur?: (e) => void
-	onFocus?: (e) => void
+	onBlur?: any
+	onFocus?: any
 	variant?: string
 	style?: any
 }
@@ -37,6 +37,6 @@ const Icon: React.FunctionComponent<Props> = ({
 	)
 }
 
-// Although this is extending a reactComponent (icon), 
+// Although this is extending a reactComponent (svg)), 
 // StyledComponent is still required to pass styles.
 export default StyledComponent(Icon, 'Icon')

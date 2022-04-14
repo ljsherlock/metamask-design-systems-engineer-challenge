@@ -29,4 +29,4 @@ const Copy: FunctionComponent<CopyProps> = ({
 	)
 }
 
-export default StyledComponent(Copy, 'Text')
+export default StyledComponent(Copy, 'Copy')

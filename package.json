@@ -1,0 +1,83 @@
+{
+  "name": "mobile-approveme",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@types/enzyme": "^3.10.12",
+    "@types/jest": "^27.4.1",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/styled-components": "^5.1.25",
+    "@types/styled-system": "^5.1.15",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "file-loader": "^5.1.0",
+    "jest": "^27.5.1",
+    "npm-run-all": "^4.1.5",
+    "react-is": "^16.13.1",
+    "resolve-url-loader": "^3.1.1",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^8.5.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.7",
+    "@storybook/addon-a11y": "5.3.0-rc.1",
+    "@storybook/addon-actions": "5.3.0-rc.1",
+    "@storybook/addon-docs": "5.3.0-rc.1",
+    "@storybook/addon-info": "5.3.0-rc.1",
+    "@storybook/addon-knobs": "5.3.0-rc.1",
+    "@storybook/addon-links": "5.3.0-rc.1",
+    "@storybook/addon-storysource": "^5.3.14",
+    "@storybook/addon-viewport": "^5.3.14",
+    "@storybook/addons": "5.3.0-rc.1",
+    "@storybook/preset-create-react-app": "^1.5.0",
+    "@storybook/react": "5.3.0-rc.1",
+    "@styled-system/theme-get": "^5.1.2",
+    "@types/mdx-js__react": "^1.5.1",
+    "@types/node": "12.12.7",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.4",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
+    "babel-preset-airbnb": "^4.4.0",
+    "fork-ts-checker-webpack-plugin": "^3.0.1",
+    "hex-to-rgba": "^2.0.1",
+    "lodash": "^4.17.15",
+    "lodash.merge": "^4.6.2",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.11.0",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "3.2.0",
+    "react-use": "^13.22.3",
+    "rgb-to-hsl": "^0.0.3",
+    "styled-components": "^5.3.5",
+    "styled-system": "^5.1.2",
+    "ts-loader": "^6.2.2",
+    "ts-node": "^8.5.0",
+    "tslint": "^5.14.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.6.5",
+    "webfontloader": "^1.6.28"
+  },
+  "scripts": {
+    "remove-build": "yarn storybook:build",
+    "storybook": "start-storybook -p 3000 -c .storybook watch-css -s ./src",
+    "storybook:build": "build-storybook -c .storybook -o .out",
+    "storybook:server": "ts-node --project tsconfig-server.json src/server.ts"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -5,11 +5,37 @@ import {
   Story, 
   Preview 
 } from '@storybook/addon-docs/blocks'
-import { theme } from '../../config/styleguide'
+import { theme } from '../../config/styleguide'
 
-<Meta title="1. Style Guide/Theming/Borders" />
+import Div from '../../primitiveUI/Containers/Div'
+import HorizontalLine from '../../primitiveUI/DesignElements/HorizontalLine'
+
+<Meta title="1. Style GUide/3. Theme/Borders" />
 
 # Borders
 
-
-    
+<Div variant='flexbox' flexWrap='wrap' flexDirection='row'>
+  {theme.border.map((key, item) => {
+    return (
+      <Div variant='flexbox'
+        p={key} 
+        my={theme.space[1]} 
+        mr={theme.space[1]} 
+        backgroundColor={theme.colors.valid} 
+        height='1em' 
+        width='10em'
+      >
+        <Div 
+          variant='flexbox'
+          flexDirection='column'
+          backgroundColor={theme.colors.white} 
+          width='100%' 
+          height='100%'
+        >
+          <label>{key}</label>
+          <HorizontalLine border={key} />
+        </Div>
+      </Div>
+    )
+  })}
+</Div>

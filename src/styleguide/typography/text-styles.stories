@@ -1,0 +1,71 @@
+import { 
+  Meta, 
+  ColorPalette, 
+  ColorItem, 
+  Story, 
+  Preview, 
+  Source
+} from '@storybook/addon-docs/blocks'
+
+import { theme } from '../../config/styleguide'
+
+import Div from '../../primitiveUI/Containers/Div'
+import Heading from '../../primitiveUI/Text/Heading'
+import Copy from '../../primitiveUI/Text/Copy'
+
+<Meta title="1. Style GUide/4. Typography/Font Families" />
+
+# Font Styles
+
+---
+
+<Div width={theme.measure[8]}>
+
+  <Div 
+    display='flex' 
+    flexDirection='column'
+    flexWrap='wrap'
+  >
+    {Object.keys(theme.fonts).map((key, index) => {
+      return (
+        <Div 
+          display='flex'
+          flexDirection='column'
+          mb={theme.space[1]}
+        >
+          <>
+            <Div 
+              width='100%'
+              display='flex'
+              justifyContent='center'
+              backgroundColor='lightgray'
+            >
+              <Copy fontSize={theme.fontSizes[0]} color='black'>
+                {theme.fonts[key]}
+              </Copy>
+            </Div>
+            <Div 
+              width='100%'
+              height='100%'
+              display='flex'
+              flexDirection='column'
+              alignItems='flex-end'
+              justifyContent='center'
+              p={theme.space[1]}
+            >
+              <Heading l
+                evel='1'
+                fontSize={theme.fontSizes[0]}
+                fontFamily={theme.fonts[key]}
+                lineHeight='1.5'
+              >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              </Heading>
+            </Div>
+            <Source language='typescript' code={`theme.fonts.${theme.fonts[key]}`}/>
+          </>
+        </Div>
+      )
+    })}
+  </Div>
+</Div>

@@ -32,7 +32,7 @@ export const HeadingStory: FunctionComponent<Props> = (props) => {
 }
 
 export default {
-  title: 'Primitive/Text/Heading',
+  title: '2. Primitive Components/Text/Heading',
   component: HeadingStory,
 }
 

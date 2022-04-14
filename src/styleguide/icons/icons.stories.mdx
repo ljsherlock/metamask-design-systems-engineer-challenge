@@ -1,0 +1,35 @@
+import { 
+  Meta, 
+  ColorPalette, 
+  ColorItem, 
+  Story, 
+  Preview 
+} from '@storybook/addon-docs/blocks'
+
+import { theme } from '../../config/styleguide'
+
+import Icons from '../../assets/icons'
+
+import Div from '../../primitiveUI/Containers/Div'
+import IconButton from '../../components/UserInput/Mouse/IconButton'
+
+<Meta title="1. Style Guide/5. Icons" />
+
+# Icons
+
+<Div display='flex' alignItems='flex-end' flexDirection='row'>  
+  {Object.keys(icons).map(key => {
+    return (
+      <Div variant='flexbox'
+        pb={key}
+        mb={theme.space[1]}
+        mr={theme.space[1]}
+        flexDirection='column'
+        alignItems='center'
+      >
+        <IconButton mb={theme.space[2]} icon={key}/>
+        <label>{key}</label>
+      </Div>
+    )
+  })}
+</Div>

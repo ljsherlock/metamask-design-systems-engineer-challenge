@@ -33,4 +33,4 @@ const Heading: FunctionComponent<Props> = ({
 	)
 }
 
-export default StyledComponent(Heading, 'Text')
+export default StyledComponent(Heading, 'Heading')

@@ -1,5 +1,4 @@
 import merge from 'lodash.merge'
-
 import styled, { 
 	StyledComponentProps,
 	css, 
@@ -28,7 +27,10 @@ import {
 	ColorProps,
 	ShadowProps,
 } from 'styled-system'
-import { theme } from '../config/theme'
+
+import { Map, Property } from '../config/types'
+import styleguide from '../config/theme'
+import { primitivesProperties } from '../config/primitiveProperties'
 
 type StyledSystemProps<
 	C extends keyof JSX.IntrinsicElements | React.ComponentType<any>,
@@ -52,21 +54,19 @@ export type StyledComponentSystemProps = StyledSystemProps<'div',
 	& ShadowProps
 >
 
-export const ifMerge = (a1, a2) => {
-	return merge({}, a1, a2)
+export type styleComponentProperties = {
+	style?: Property | {} | null
+	space?: Property | {} | null
+	layout?: Property | {} | null
+	typography?: Property | {} | null
+	state?: Property | {} | null
+	active?: Property | {} | null
+	variants?: Property | {} | null
 }
 
 export type styleComponentTypesType = {
 	className?: string
-	properties?: {
-		style?: any
-		space?: any
-		layout?: any
-		typography?: any
-		state?: any
-		active?: any
-		variants?: any
-	},
+	properties?: styleComponentProperties
 	variant?: string
 }
 
@@ -96,33 +96,16 @@ export const propertiesObj = () => {
 	}
 }
 
-// const rgbToHsl = (r, g, b) => {
-// 	r /= 255
-// 	g /= 255
-// 	b /= 255
-	
-// 	let max = Math.max(r, g, b);
-//   let min = Math.min(r, g, b);
-//   let d = max - min;
-//   let h;
-	
-// 	if (d === 0) h = 0;
-//   else if (max === r) h = (g - b) / d % 6;
-//   else if (max === g) h = (b - r) / d + 2;
-//   else if (max === b) h = (r - g) / d + 4;
-	
-// 	let l = (min + max) / 2;
-//   let s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
-	
-// 	return { hue: h * 60, saturation: s, lightness: l };
-// }
-
-const HexToRGB = (hex) => {
+const HexToRGB = (hex: string) => {
 	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
-	var r = parseInt(result[1], 16);
-	var g = parseInt(result[2], 16);
-	var b = parseInt(result[3], 16);
+	if(result) {
+		var r = parseInt(result[1], 16);
+		var g = parseInt(result[2], 16);
+		var b = parseInt(result[3], 16);
+	} else {
+		return false
+	}
 
 	r /= 255
 	g /= 255
@@ -139,7 +122,7 @@ const HexToRGB = (hex) => {
 	return {r: r, g: g, b: b}
 }
 
-const RGBtoHSL = (r, g, b) =>  {
+const RGBtoHSL = (r: number, g: number, b: number) =>  {
 
 	var max = Math.max(r, g, b), min = Math.min(r, g, b);
 	var h, s, l = (max + min) / 2;
@@ -154,7 +137,11 @@ const RGBtoHSL = (r, g, b) =>  {
 					case g: h = (b - r) / d + 2; break;
 					case b: h = (r - g) / d + 4; break;
 			}
-			h /= 6;
+			if(h) {
+				h /= 6;
+			} else {
+				return false
+			}
 	}
 
 	s = s*100;
@@ -173,23 +160,23 @@ export const sortGrays = (colorsArray: any) => {
 		const hex = colorsArray[c][1]
 		const name = colorsArray[c][0]
 		const rgb = HexToRGB(colorsArray[c][1])
-		const { r, g, b } = rgb
-		const hsl = RGBtoHSL(r, g, b)
+		if(rgb) {
+			const { r, g, b } = rgb
+			const hsl = RGBtoHSL(r, g, b)
 
-		// console.log(colorsArray[c])
-		// console.log(`name: ${name}: ${hex}`)
-		// console.log(`${name}, ${hex}`, hsl)
-
-		if (hsl.hue === 0) {
-			graysArray.push(
-				{
-					name: name,
-					hex: hex,
-					hue: hsl.hue,
-					saturation: hsl.saturation,
-					lightness: hsl.lightness,
+			if(hsl) { 
+				if (hsl.hue === 0) {
+					graysArray.push(
+						{
+							name: name,
+							hex: hex,
+							hue: hsl.hue,
+							saturation: hsl.saturation,
+							lightness: hsl.lightness,
+						}
+					)
 				}
-			)
+			}
 		}
 	}
 
@@ -214,47 +201,48 @@ export const sortColors = (colors: any) => {
 
 		// const hsl = rgbToHsl(r, g, b)
 		const rgb = HexToRGB(colors[c][1])
-		const { r, g, b } = rgb
-		const hsl = RGBtoHSL(r,g,b)
 
-		/* Getting the Max and Min values for Chroma. */
-		var max = Math.max.apply(Math, [r,g,b]);
-		var min = Math.min.apply(Math, [r,g,b]);
+		if(rgb) {
+			const { r, g, b } = rgb
+			const hsl = RGBtoHSL(r, g, b)
+			if(hsl) {
+				/* Getting the Max and Min values for Chroma. */
+				var max = Math.max.apply(Math, [r,g,b]);
+				var min = Math.min.apply(Math, [r,g,b]);
 
-		/* Variables for HSV value of hex color. */
-		var chr = max-min
-		var hue = hsl.hue
-		var val = hsl.lightness
-		var sat = hsl.saturation
+				/* Variables for HSV value of hex color. */
+				var chr = max-min
+				var hue = hsl.hue
+				var val = hsl.lightness
+				var sat = hsl.saturation
 
-		console.log(name, hsl)
-
-		if (val > 0 && hue !== 0) {
-			/* Calculate Saturation only if Value isn't 0. */
-			sat = chr/val;
-			if (sat > 0) {
-					if (r == max) { 
-							hue = 60*(((g-min)-(b-min))/chr);
-							if (hue < 0) {hue += 360;}
-					} else if (g == max) { 
-							hue = 120+60*(((b-min)-(r-min))/chr); 
-					} else if (b == max) { 
-							hue = 240+60*(((r-min)-(g-min))/chr); 
+				if (val > 0 && hue !== 0) {
+					/* Calculate Saturation only if Value isn't 0. */
+					sat = chr/val;
+					if (sat > 0) {
+							if (r == max) { 
+									hue = 60*(((g-min)-(b-min))/chr);
+									if (hue < 0) {hue += 360;}
+							} else if (g == max) { 
+									hue = 120+60*(((b-min)-(r-min))/chr); 
+							} else if (b == max) { 
+									hue = 240+60*(((r-min)-(g-min))/chr); 
+							}
 					}
-			}
 
-			colorsArray.push(
-				{
-					name: name,
-					hex: hex,
-					hue: hue,
-					saturation: sat,
-					lightness: val,
+					colorsArray.push(
+						{
+							name: name,
+							hex: hex,
+							hue: hue,
+							saturation: sat,
+							lightness: val,
+						}
+					)
 				}
-			)
+			}
 		}
 	}
-	console.log('before sort', colorsArray)
 	/* Sort by Hue. */
 	return colorsArray.sort( (a, b) => {
 		// If the first item has a higher number, move it down
@@ -268,7 +256,10 @@ export const sortColors = (colors: any) => {
 	})
 }
 
-export const mergeProperties = (properties, PropProperties) => {
+export const mergeProperties = (
+	properties: styleComponentProperties, 
+	PropProperties: styleComponentProperties
+) => {
 	let mergedProperties = propertiesObj()
 
 	if (PropProperties !== undefined) {
@@ -302,19 +293,32 @@ export const mergeProperties = (properties, PropProperties) => {
 	return  properties
  }
 
-const ifExists = (vari, prop) => (vari !== undefined && vari[prop] !== undefined) ? vari[prop] : null
+const ifExists = (vari: any, prop: string) => {
+	return (vari !== undefined && vari[prop] !== undefined) ? vari[prop] : null
+}
 
-export const StyledComponent = (ReactComponent, componentName, animation?: any) => {
-	const { primitives } = theme 
+export const ifMerge = (a1: any, a2: any) => {
+	return merge({}, a1, a2)
+}
+
+export const StyledComponent = (
+	ReactComponent: any, 
+	componentName: string,
+	animation?: any
+) => {
+	// interface Props {
+	// 	properties: styleComponentProperties
+	// 	active: boolean
+	// }
 
 	let newComponent = styled(ReactComponent)
 		.withConfig({ displayName: componentName })
 		(
-			props => ifMerge(ifExists(primitives[componentName], 'space'), ifExists(props.properties, 'space')),
-			props => ifMerge(ifExists(primitives[componentName], 'layout'), ifExists(props.properties, 'layout')),
-			props => ifMerge(ifExists(primitives[componentName], 'typography'), ifExists(props.properties, 'typography')),
-			props => ifMerge(ifExists(primitives[componentName], 'style'), ifExists(props.properties, 'style')),
-			props => ifMerge(ifExists(primitives[componentName], 'state'), ifExists(props.properties, 'state')),
+			(props: any) => ifMerge(ifExists(primitivesProperties[componentName], 'space'), ifExists(props.properties, 'space')),
+			(props: any) => ifMerge(ifExists(primitivesProperties[componentName], 'layout'), ifExists(props.properties, 'layout')),
+			(props: any) => ifMerge(ifExists(primitivesProperties[componentName], 'typography'), ifExists(props.properties, 'typography')),
+			(props: any) => ifMerge(ifExists(primitivesProperties[componentName], 'style'), ifExists(props.properties, 'style')),
+			(props: any) => ifMerge(ifExists(primitivesProperties[componentName], 'state'), ifExists(props.properties, 'state')),
 			color,
 			layout,
 			space,
@@ -325,36 +329,13 @@ export const StyledComponent = (ReactComponent, componentName, animation?: any) 
 			position,
 			grid,
 			shadow,
-			props => props.active && ifMerge(ifExists(primitives[componentName], 'active'), ifExists(props.properties, 'active')),
-			props => variant({
-				 variants: ifMerge(ifExists(theme.primitives[componentName], 'variants'), ifExists(props.properties, 'variants')) 
+			(props: any) => props.active && ifMerge(ifExists(primitivesProperties[componentName], 'active'), ifExists(props.properties, 'active')),
+			(props: any) => variant({
+				 variants: ifMerge(ifExists(primitivesProperties[componentName], 'variants'), ifExists(props.properties, 'variants')) 
 			})
 	)
 
 	if (animation) {
-		// const newComponentWithAnimation = styled(newComponent)`
-		// 	${animation.selector}: {
-		// 		animation: ${css`${animation.name} ${animation.duration} ${animation.timingFunction} ${animation.iterationCount};`}
-		// 	}`
-
-		// console.log(newComponentWithAnimation)
-
-		// const markPulse = keyframes`
-		// 	0% {
-		// 		opacity: 0;
-		// 		transform: scale(0, 0);
-		// 	}
-		// 	50% {
-		// 		opacity: 1;
-		// 		transform: scale(1, 1);
-		// 	}
-		// 	100% {
-		// 	transform: scale(0, 0); 
-		// 	}
-		// `
-		console.log(newComponent)
-
-		console.log('animation.name', animation.keyframes)
 		const keyframe = keyframes`${animation.keyframes}`
 
 		newComponent = styled(newComponent)`
@@ -362,7 +343,6 @@ export const StyledComponent = (ReactComponent, componentName, animation?: any) 
 				color: purple;
 				animation: ${css`${keyframe} 3s ease-out infinite;`}
 			}`
-		console.log(newComponent)
 
 		return newComponent
 	}

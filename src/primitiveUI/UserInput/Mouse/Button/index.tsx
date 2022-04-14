@@ -9,10 +9,10 @@ export interface ButtonProps extends styleComponentTypes {
 	type?: 'submit' | 'reset' | 'button'
 	className?: string
 	id?: string
-	onMouseEnter?: (e) => void
-	onClick?: (e) => void
-	onKeyDown?: (e) => void
-	onBlur?: (e) => void
+	onMouseEnter?: any
+	onClick?: any
+	onKeyDown?: any
+	onBlur?: any
 	inputRef?: () => void
 	disabled?: boolean
 	variant?: string

@@ -33,7 +33,7 @@ export const Copy: FunctionComponent<Props> = (props) => {
 }
 
 export default {
-  title: 'Primitive/Text/Paragraph',
+  title: '2. Primitive Components/Text/Copy',
   component: Copy,
 }
 

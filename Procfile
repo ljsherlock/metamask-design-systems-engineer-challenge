@@ -1,1 +1,0 @@
-web: ts-node --project tsconfig-server.json src/server.ts
