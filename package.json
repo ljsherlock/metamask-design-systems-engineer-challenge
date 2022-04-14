@@ -60,7 +60,7 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
-    "build": "npm install && npm run build-storybook",
+    "build": "npm run build-storybook",
     "remove-build": "yarn storybook:build",
     "storybook": "start-storybook -p 3000 -c .storybook watch-css -s ./src",
     "storybook:build": "build-storybook -c .storybook -o .out",
