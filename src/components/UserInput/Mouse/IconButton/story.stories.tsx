@@ -3,7 +3,7 @@ import { withKnobs, select } from "@storybook/addon-knobs"
 
 import IconButton from './index'
 
-import * as icons from '../../../../assets/icons'
+import icons from '../../../../assets/icons'
 
 interface Props {
   name: string
@@ -11,7 +11,7 @@ interface Props {
 }
 export const IconButtonStory: FunctionComponent<Props> = (props) => {
   
-  let iconOptions = {}
+  let iconOptions: any = {}
   Object.keys(icons).forEach(key => {
      iconOptions[key] = key
   })

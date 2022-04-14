@@ -29,14 +29,14 @@ configure([
     // Style Guide
     require.context('../src/styleguide', true, /.(mdx)$/),
     require.context('../src/primitiveUI', true, /.(mdx)$/),
-    require.context('../src/scenes', true, /.(mdx)$/),
+    require.context('../src/organisms', true, /.(mdx)$/),
     require.context('../src/primitiveUI/Text/Copy', true, /story.stories\.(mdx|[tj]sx?)$/), 
     require.context('../src/components/UserInput/Mouse/IconButton', true, /story.stories\.(mdx|[tj]sx?)$/), 
     require.context('../src/primitiveUI/UserInput/Mouse/Button', true, /story.stories\.(mdx|[tj]sx?)$/), 
 
     // Scenes
-    require.context('../src/scenes/PriceChecker', true, /scene.stories\.(mdx|[tj]sx?)$/), 
-    require.context('../src/scenes/PriceChecker', true, /story.stories\.(mdx|[tj]sx?)$/), 
+    require.context('../src/organisms/PriceChecker', true, /scene.stories\.(mdx|[tj]sx?)$/), 
+    require.context('../src/organisms/PriceChecker', true, /story.stories\.(mdx|[tj]sx?)$/), 
   ],
   module
 );

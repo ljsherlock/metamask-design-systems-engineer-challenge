@@ -18,15 +18,6 @@ interface Props {
 
 export const LightSwitchStory: FunctionComponent<Props> = (props) => {
 
-  const exampleSelect = select(
-    'Select',
-    {
-      moon: 'Moon',
-      sun: 'Sun'
-    },
-    'Moon'
-  )
-
   const variant = select(
     'Light',
     {
@@ -38,7 +29,7 @@ export const LightSwitchStory: FunctionComponent<Props> = (props) => {
 
   return (
     <Div variant='flexbox'margin={theme.space[3]}>
-      <LightSwitch icon={exampleSelect} variant={variant}/>
+      <LightSwitch variant={variant}/>
     </Div>
   )
 }

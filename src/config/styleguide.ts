@@ -52,6 +52,8 @@ const theme = {
 		headline: "#F7F7F7",
 		body: "#FFFFFF",
 	},
+	sortedGrays: {},
+	sortedColors: {},
 	border: [
 		'1px solid',
 		'2px solid',
@@ -62,7 +64,7 @@ const theme = {
 		'background 1.6s, color .1.6s, border-color .1.6s, fill .1.6s',
 		'background 3.2s, color 3.2s, border-color 3.2s, fill 3.2s',
 	],
-	primitiveProperties: {}
+	primitivesProperties: {}
 }
 
 export { theme }

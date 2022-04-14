@@ -5,7 +5,7 @@ import {
 } from '../../../../utilities/styleUtility'
 
 import LightSwitchUI from '.'
-import PriceCheckerContainer from '../../../../scenes/PriceChecker/components/Container'
+import PriceCheckerContainer from '../Container'
 
 interface Props extends styleComponentTypes {}
 
@@ -14,7 +14,7 @@ class LightSwitch extends React.Component<Props> {
     light: true
   }
   
-  constructor(props) {
+  constructor(props: Props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
   }
