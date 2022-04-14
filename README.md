@@ -50,7 +50,9 @@ After you’re done answer these questions
 - 12 hours
 
 **Do you feel that this assignment allowed you to showcase your abilities effectively?**
+
 I believe this assignment has quite effectively shown my ability to effectively extract and systemise the style and functionality of a simple application and organise that style and functionality in a sane, evergreen and effective way.
 
 **Are there any significant web development-related skills that you possess that were not demonstrated in this exercise? If so, what are they?**
+
 Node.js development e.g. fetching the ETH price with something like Axios from somewhere like Gemini, and implementing a fullstack application (I am currently learning to use the Remix framework, currently I use Next.js).
