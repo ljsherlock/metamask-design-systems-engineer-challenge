@@ -12,7 +12,7 @@ You can run Storybook by running:
   # yarn/npm storybook
 ```
 
-Or see the price on [Vercel](https://metamask-design-systems-engineer-challenge-jluc24xkr.vercel.app/?path=/story/1-style-guide-1-summary--page);
+Or see see it live on [Vercel](https://metamask-design-systems-engineer-challenge-jluc24xkr.vercel.app/?path=/story/1-style-guide-1-summary--page).
 
 ### Transitions
 As part of the pre-qualifying questions that I did not get to ask, transitions for the following componets can be enabled by uncommenting all commented lines in `src/config/primitiveComponents.ts`:
