@@ -32,7 +32,8 @@ export const primitivesProperties: any = {
     },
     style: {
       color: theme.colors.tePapaGreen,
-      transition: theme.transitions[0]
+      // Uncomment for smooth changes
+      // transition: theme.transitions[0]
     },
     variants: {
       dark: {
@@ -46,7 +47,8 @@ export const primitivesProperties: any = {
     },
     typography: {
       fontSize: theme.fontSizes[1],
-      transition: theme.transitions[0]
+      // Uncomment for smooth changes
+      // transition: theme.transitions[0]
     },
     style: {
       color: theme.colors.timberGreen
@@ -64,7 +66,8 @@ export const primitivesProperties: any = {
       background: 'transparent',
       userSelect: 'none',
       border: theme.border[1],
-      transition: theme.transitions[0]
+      // Uncomment for smooth changes
+      // transition: theme.transitions[0]
     },
     typography: {
       fontSize: theme.fontSizes[0],
